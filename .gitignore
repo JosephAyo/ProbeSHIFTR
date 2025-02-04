@@ -1,0 +1,4 @@
+output
+*.fasta
+*.psl
+.DS_Store
