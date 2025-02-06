@@ -17,9 +17,11 @@ ENV JAVA_HOME=/opt/jdk-14.0.2+12
 ENV PATH=$JAVA_HOME/bin:$PATH
 
 # Install BLAT
-RUN wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/blat && \
+RUN wget -O blat http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/blat/blat && \
     chmod +x blat && \
-    mv blat /usr/local/bin/
+    mv blat /usr/local/bin/ && \
+    ls -l /usr/local/bin/blat && \
+    file /usr/local/bin/blat  # Verify it's a binary
 
 # Set working directory inside the container
 WORKDIR /app/jar
@@ -28,7 +30,4 @@ WORKDIR /app/jar
 COPY . /app
 
 # Install required R packages
-RUN Rscript -e "install.packages(c('readr', 'data.table', 'rtracklayer', 'GenomicRanges', 'IRanges', 'tidyr', 'seqinr', 'ggplot2'), repos='http://cran.rstudio.com/')"
-
-# Command to run ProbeSHIFTR
-ENTRYPOINT ["java", "-jar", "ProbeSHIFTR.jar"]
+# RUN Rscript -e "install.packages(c('readr', 'data.table', 'rtracklayer', 'GenomicRanges', 'IRanges', 'tidyr', 'seqinr', 'ggplot2'), repos='http://cran.rstudio.com/')"
