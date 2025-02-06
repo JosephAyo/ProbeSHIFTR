@@ -1,1 +1,0 @@
-java -jar ProbeSHIFTR.jar -d sars_cov.fasta -t orf1.fasta -l 50  -score 10 -blat output.psl --output-dir output

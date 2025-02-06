@@ -1,0 +1,6 @@
+docker build -t my-probeshiftr .                                                    
+
+docker run --rm my-probeshiftr java -jar ProbeSHIFTR.jar -d sars_cov.fasta -t orf1.fasta -l 50  -score 10 -blat /usr/local/bin/blat --output-dir italawa -p 4 && ls
+
+
+docker cp 06c7725c033886a6acaf38704b55b4dfea9f562584546f3746676209a253904f:/app/jar/italawa/BLAT_results/. blat-outputs
