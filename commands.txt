@@ -3,5 +3,9 @@ docker load -i my-probeshiftr
 ## FOR WINDOWS POWERSHELL ##
 docker run --name my-running-probeshiftr my-probeshiftr java -jar ProbeSHIFTR.jar -d sars_cov.fasta -t orf1.fasta -l 50 -score 10 -blat /usr/local/bin/blat --output-dir italawa -p 4 ; docker cp my-running-probeshiftr:/app/jar/italawa/. probeshiftr-outputs ; docker rm my-running-probeshiftr
 
+docker run -v ${pwd}\jar:/app/jar --name my-running-probeshiftr my-probeshiftr java -jar ProbeSHIFTR.jar -d sars_cov2.fasta -t orf11.fasta -l 50 -score 10 -blat /usr/local/bin/blat --output-dir output-original -p 4 ; docker rm my-running-probeshiftr
+
 ## FOR MAC/LINUX ##
 docker run --name my-running-probeshiftr my-probeshiftr java -jar ProbeSHIFTR.jar -d sars_cov.fasta -t orf1.fasta -l 50 -score 10 -blat /usr/local/bin/blat --output-dir italawa -p 4 && docker cp my-running-probeshiftr:/app/jar/italawa/. probeshiftr-outputs && docker rm my-running-probeshiftr
+
+docker run -v /Users/mac/Documents/docker_images/jar:/app/jar --name my-running-probeshiftr my-probeshiftr java -jar ProbeSHIFTR.jar -d sars_cov2.fasta -t orf11.fasta -l 50 -score 10 -blat /usr/local/bin/blat --output-dir output-original -p 4 && docker rm my-running-probeshiftr
